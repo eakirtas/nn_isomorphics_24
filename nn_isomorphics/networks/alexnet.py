@@ -155,7 +155,7 @@ class AlexNet(nn.Module):
                 self.alpha = T.tensor([6] + [alpha for _ in range(7)])
 
         self.act_func_cls = act_func_cls
-        self.nn_activation = act_func_cls
+        self.nn_activation = nn_activation
         if nn_activation is None:
             self.nn_activation = act_func_cls
 

@@ -144,7 +144,7 @@ class VGG(nn.Module):
             [6] + [alpha for _ in range(int(version[-2:]) - 1)])
 
         self.act_func_cls = act_func_cls
-        self.nn_activation = act_func_cls
+        self.nn_activation = nn_activation
         if nn_activation is None:
             self.nn_activation = act_func_cls
 
