@@ -40,27 +40,22 @@ def get_model(model_name, activation_str):
     if activation_str == 'relu':
         bound = MAX_BOUNDS[model_name]
         activation_cls = T.nn.ReLU
+        activation_cls_nn = lambda: ReLUN(bound)
     elif 'relu' in activation_str:
         bound = int(activation_str[4:])
-        activation_cls = lambda: ReLUN(bound)
-    elif 'gelu' == activation_str:
-        bound = MAX_BOUNDS[model_name]
-        activation_cls = T.nn.GELU
-    elif 'gelu' in activation_str:
-        bound = int(activation_str[4:])
-        activation_cls = lambda: GELUN(n=bound)
+        activation_cls_nn = activation_cls = lambda: ReLUN(bound)
     else:
         raise Exception('The introduced activation function is not supported')
 
     if model_name == 'alexnet':
-        model = AlexNet(
-            alpha=bound,
-            act_func_cls=activation_cls,
-        )
+        model = AlexNet(alpha=bound,
+                        act_func_cls=activation_cls,
+                        nn_activation=activation_cls_nn)
     elif 'vgg' in model_name:
         model = VGG(
             model_name,
             activation_cls,
+            nn_activation=activation_cls_nn
             alpha=bound,
         )
     elif 'resnext' in model_name:
@@ -68,7 +63,7 @@ def get_model(model_name, activation_str):
     elif 'wide_resnet' in model_name:
         pass
     elif 'resnet' in model_name:
-        model = ALL_RESNETS[model_name](activation_cls, None, bound)
+        model = ALL_RESNETS[model_name](activation_cls, activation_cls_nn, bound)
     else:
         raise Exception('This models is not supported yet')
     return model

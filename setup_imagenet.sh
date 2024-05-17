@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# echo "--- Download ImageNet1K ---"
-# IMG_PATH=./datasets/imagenet
-# mkdir -p $IMG_PATH
-# wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar -P $IMG_PATH
-# wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_devkit_t12.tar.gz -P $IMG_PATH
+echo "--- Download ImageNet1K ---"
+IMG_PATH=./datasets/imagenet
+mkdir -p $IMG_PATH
+wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar -P $IMG_PATH
+wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_devkit_t12.tar.gz -P $IMG_PATH
 
 echo "--- Download VGG11 from PyTorch Repo ---"
 mkdir -p ./models/vgg/
@@ -26,12 +26,6 @@ wget https://download.pytorch.org/models/resnet101-63fe2227.pth -P ./models/resn
 wget https://download.pytorch.org/models/resnet101-cd907fc2.pth -P ./models/resnet/
 wget https://download.pytorch.org/models/resnet152-f82ba261.pth -P ./models/resnet/
 
-echo "--- Download ViT from PyTorch Repo ---"
-mkdir -p ./models/vit/
-wget https://download.pytorch.org/models/vit_b_16-c867db91.pth -P ./models/vit/
-wget https://download.pytorch.org/models/vit_b_32-d86f8d99.pth -P ./models/vit/
-wget https://download.pytorch.org/models/vit_l_16-852ce7e3.pth -P ./models/vit/
-wget https://download.pytorch.org/models/vit_l_32-c7638314.pth -P ./models/vit/
 
 
 
