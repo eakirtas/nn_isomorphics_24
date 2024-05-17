@@ -55,7 +55,7 @@ def get_model(model_name, activation_str):
         model = VGG(
             model_name,
             activation_cls,
-            nn_activation=activation_cls_nn
+            nn_activation=activation_cls_nn,
             alpha=bound,
         )
     elif 'resnext' in model_name:
@@ -63,7 +63,8 @@ def get_model(model_name, activation_str):
     elif 'wide_resnet' in model_name:
         pass
     elif 'resnet' in model_name:
-        model = ALL_RESNETS[model_name](activation_cls, activation_cls_nn, bound)
+        model = ALL_RESNETS[model_name](activation_cls, activation_cls_nn,
+                                        bound)
     else:
         raise Exception('This models is not supported yet')
     return model
