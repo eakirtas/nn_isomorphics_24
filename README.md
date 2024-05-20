@@ -101,7 +101,42 @@ Finally, we evaluate non-negative transformation on ImagNet1K employing AlexNet 
 ```bash 
  ./setup_imagenet.sh
  ```
-To evaluate the proposed method use:
+
+You can easily display the available option using:
+```bash 
+Runs experiments using Non Negative Isomorphic Neural Networks
+
+options:
+  -h, --help            show this help message and exit
+  --activation ACTIVATION [ACTIVATION ...], -a ACTIVATION [ACTIVATION ...]
+                        the employed activation
+  --architecture ARCHITECTURE [ARCHITECTURE ...], -c ARCHITECTURE [ARCHITECTURE ...]
+                        employed architecture
+  --dataset {imagenet,cifar10,cifar100,mnist,fashion_mnist} [{imagenet,cifar10,cifar100,mnist,fashion_mnist} ...], -d {imagenet,cifar10,cifar100,mnist,fashion_mnist} [{imagenet,cifar10,cifar100,mnist,fashion_mnist} ...]
+                        dataset
+  --wandb WANDB, -w WANDB
+                        use wandb
+  --log {info,debug,warning,error,critical}
+                        logging level
+```
+
+In order to run the experiments for ImageNet1K on has to run the following:
+```bash
+poetry run python ./nn_isomorphics/nn_imagenet.py -a relu -c alexnet vgg11 vgg13 vgg16 vgg19 resnet18 resnet34 resnet50 resnet101 resnet152 -d imagenet
+```
+getting the experimental results:
+| architecture   | dataset   | activation   |   r_acc1 |   r_acc5 |   nn_acc1 |   nn_acc5 |
+|----------------|-----------|--------------|----------|----------|-----------|-----------|
+| alexnet        | imagenet  | relu         |   56.556 |   79.088 |    56.366 |    79.1   |
+| vgg11          | imagenet  | relu         |   69.04  |   88.634 |    68.954 |    88.59  |
+| vgg13          | imagenet  | relu         |   69.94  |   89.258 |    69.836 |    89.28  |
+| vgg16          | imagenet  | relu         |   71.586 |   90.39  |    71.346 |    90.338 |
+| vgg19          | imagenet  | relu         |   72.394 |   90.886 |    72.214 |    90.716 |
+| resnet18       | imagenet  | relu         |   69.76  |   89.08  |    69.756 |    89.092 |
+| resnet34       | imagenet  | relu         |   73.302 |   91.42  |    73.302 |    91.426 |
+| resnet50       | imagenet  | relu         |   80.346 |   95.128 |    80.346 |    95.1   |
+| resnet101      | imagenet  | relu         |   81.672 |   95.658 |    77.738 |    93.686 |
+| resnet152      | imagenet  | relu         |   82.346 |   95.916 |    82.344 |    95.916 |
 
 
 
