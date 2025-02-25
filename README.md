@@ -1,6 +1,6 @@
-# Non-negative isomorphic neural networks for neuromorphic accelerators
+# Non-negative isomorphic neural networks for efficient accelerators
 
-This repository is an implementation and demonstration of the paper: [Non-negative isomorphic neural networks for photonic accelerators]().
+This repository is an implementation and demonstration of the paper: [Non-negative isomorphic neural networks for efficient accelerators]().
 
 ## Installation
 
